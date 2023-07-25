@@ -1,14 +1,21 @@
 import './App.css';
 import Dashboard from './Dashboard';
-import Routers from './Routers';
+import Registration from './Registration';
+import { useState } from 'react';
 
 function App() {
+  const [data, setData] = useState()
+
+
+  const response = (data) => {
+    setData(data);
+  }
   return (
     <div>
-      {/* <header className="App-header"> */}
-      <Routers />
-      {/* <Dashboard /> */}
-      {/* </header> */}
+      {data ?
+        <Dashboard responseData={data} /> :
+        <Registration responseData={response} />
+      }
     </div>
   );
 }
